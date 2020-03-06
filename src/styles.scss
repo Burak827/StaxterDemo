@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+$material-icons-font-path: "~material-icons/iconfont/";
+
+@import "~material-icons/iconfont/material-icons.scss";
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.ba-component-title {
+  margin-bottom: 1rem;
+  font-size: xx-large;
+  font-weight: 500;
+}
+
+table {
+  width: 100% !important;
+}
+
+.ba-float-right {
+  float: right !important;
+}
+
+.ba-text-align-center {
+  text-align: center;
+}
+
+.ba-row {
+  display: flex;
+}
+
+.ba-flex-float-right {
+  margin-left: auto;
+  order: 2;
+}

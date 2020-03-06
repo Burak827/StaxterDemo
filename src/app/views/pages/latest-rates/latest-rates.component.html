@@ -1,0 +1,49 @@
+<div class="ba-component-title">
+    Latest Rates
+</div>
+
+<span class="ba-float-right">
+    <mat-form-field>
+        <mat-label>Select Base Currency</mat-label>
+        <mat-select [(value)]="currentBase" (selectionChange)="onBaseCurrencyChange()">
+            <mat-option *ngFor="let currency of currencyList" [(value)]="currency">{{currency}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</span>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Currency Column -->
+    <ng-container matColumnDef="currency">
+        <th mat-header-cell *matHeaderCellDef>Currency</th>
+        <td mat-cell *matCellDef="let rate"> {{rate.currency}} </td>
+    </ng-container>
+
+    <!-- Spot Column -->
+    <ng-container matColumnDef="spot">
+        <th mat-header-cell *matHeaderCellDef>Spot</th>
+        <td mat-cell *matCellDef="let rate"> {{rate.spot | currencyValue}}
+        </td>
+    </ng-container>
+
+    <!-- Increase/Decrease Column -->
+    <ng-container matColumnDef="incDec">
+        <th mat-header-cell *matHeaderCellDef>Trend</th>
+        <td mat-cell *matCellDef="let rate" [ngSwitch]="rate.incDec" class="disable-select">
+            <span *ngSwitchCase="0" class="material-icons ba-color-green">keyboard_arrow_up</span>
+            <span *ngSwitchCase="1" class="material-icons ba-color-red">keyboard_arrow_down</span>
+            <span *ngSwitchCase="2" class="material-icons">trending_flat</span>
+        </td>
+    </ng-container>
+
+    <!-- Chart Column -->
+    <ng-container matColumnDef="chart">
+        <th mat-header-cell *matHeaderCellDef>Chart</th>
+        <td mat-cell *matCellDef="let rate">
+            <span class="material-icons chart-button disable-select"
+                (click)="navigateToChart(rate.currency)">timeline</span>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

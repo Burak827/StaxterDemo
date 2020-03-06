@@ -1,0 +1,40 @@
+$left-padding-mobile: 160px !important;
+$left-padding-desktop: 360px;
+
+.sidenav {
+  height: 100%;
+  width: $left-padding-desktop;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.main {
+  margin-left: $left-padding-desktop; /* Same as the width of the sidebar */
+  padding: 30px 30px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .sidenav {
+    width: $left-padding-mobile;
+  }
+  .main {
+    margin-left: $left-padding-mobile; /* Same as the width of the sidebar */
+  }
+}
+
+@media screen and (max-height: 450px) {
+  a {
+    font-size: 18px;
+  }
+}

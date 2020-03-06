@@ -1,0 +1,25 @@
+<div class="ba-component-title">
+    Last 30 Days
+</div>
+
+<span>
+    USD
+</span>
+
+<div class="ba-row">
+    <span class="ba-flex-float-right">
+        <mat-form-field>
+            <mat-label>Select Base Currency</mat-label>
+            <mat-select [(value)]="currentBase" (selectionChange)="onBaseCurrencyChange()">
+                <mat-option *ngFor="let currency of currencyList" [(value)]="currency">{{currency}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </span>
+</div>
+
+<div>
+    <ngx-charts-bar-vertical [view]="view" [scheme]="colorScheme" [results]="dataSource" [gradient]="gradient"
+        [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel">
+    </ngx-charts-bar-vertical>
+</div>
