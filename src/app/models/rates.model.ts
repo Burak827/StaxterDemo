@@ -41,12 +41,11 @@ export class Rates implements Deserializable {
 
     getLatestRatesTableModel(): LatestRatesTableModel[] {
         const model: LatestRatesTableModel[] = [];
-        const rates = this.rateList[0].rates;
-
         // make sure rates are sorted in terms of days are decreasing
         this.rateList.sort((a: any, b: any) => {
             return b.date.getTime() - a.date.getTime();
         });
+        const rates = this.rateList[0].rates;
 
         for (const rate in rates) {
             if (rates.hasOwnProperty(rate) &&
